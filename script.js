@@ -22,6 +22,9 @@ const alTaxOut              = document.getElementById('alTaxOut');
 const alAfterTaxOut         = document.getElementById('alAfterTaxOut');
 const totalAfterTaxOut      = document.getElementById('totalAfterTaxOut');
 
+const afterTaxToggle     = document.getElementById('afterTaxToggle');
+const taxSection         = document.getElementById('taxSection');
+
 const copyBtn            = document.getElementById('copyBtn');
 
 // ===== Constants (2024–25 genuine redundancy thresholds) =====
@@ -48,7 +51,6 @@ function fmtMoneyExact(value) {
   if (!Number.isFinite(value) || value <= 0) return '—';
   return value.toLocaleString('en-AU', {
     style: 'currency',
-    currency: 'AUD',
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   });
@@ -247,7 +249,17 @@ async function copySummary() {
   el.addEventListener('input', recalc);
 });
 
+afterTaxToggle.addEventListener('change', () => {
+  if (afterTaxToggle.checked) {
+    taxSection.classList.remove('hidden');
+  } else {
+    taxSection.classList.add('hidden');
+  }
+});
+
 copyBtn.addEventListener('click', copySummary);
 
 // Initial
 recalc();
+taxSection.classList.add('hidden');
+afterTaxToggle.checked = false;

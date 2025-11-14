@@ -70,6 +70,15 @@
       <div class="muted small">Estimated payout (before tax)</div>
       <div class="total" id="totalOut">—</div>
 
+      <!-- After-tax toggle -->
+      <div class="row after-tax-toggle">
+        <span class="muted small">Show after-tax amounts</span>
+        <label class="switch">
+          <input type="checkbox" id="afterTaxToggle" />
+          <span class="slider"></span>
+        </label>
+      </div>
+
       <details class="breakdown">
         <summary>Breakdown</summary>
         <div class="stack s6">
@@ -100,35 +109,38 @@
 
           <hr class="divider" />
 
-          <div class="row">
-            <span class="muted">Tax-free redundancy (approx)</span>
-            <strong id="taxFreeRedundancyOut">—</strong>
-          </div>
-          <div class="row">
-            <span class="muted">Taxable redundancy (ETP)</span>
-            <strong id="taxableRedundancyOut">—</strong>
-          </div>
-          <div class="row">
-            <span class="muted">Tax on redundancy (ETP)</span>
-            <strong id="redundancyTaxOut">—</strong>
-          </div>
-          <div class="row">
-            <span class="muted">Redundancy after tax</span>
-            <strong id="redundancyAfterTaxOut">—</strong>
-          </div>
+          <!-- Tax section: hidden until toggle is on -->
+          <div id="taxSection" class="tax-section hidden">
+            <div class="row">
+              <span class="muted">Tax-free redundancy (approx)</span>
+              <strong id="taxFreeRedundancyOut">—</strong>
+            </div>
+            <div class="row">
+              <span class="muted">Taxable redundancy (ETP)</span>
+              <strong id="taxableRedundancyOut">—</strong>
+            </div>
+            <div class="row">
+              <span class="muted">Tax on redundancy (ETP)</span>
+              <strong id="redundancyTaxOut">—</strong>
+            </div>
+            <div class="row">
+              <span class="muted">Redundancy after tax</span>
+              <strong id="redundancyAfterTaxOut">—</strong>
+            </div>
 
-          <div class="row">
-            <span class="muted">Tax on annual leave (approx)</span>
-            <strong id="alTaxOut">—</strong>
-          </div>
-          <div class="row">
-            <span class="muted">Annual leave after tax</span>
-            <strong id="alAfterTaxOut">—</strong>
-          </div>
+            <div class="row">
+              <span class="muted">Tax on annual leave (approx)</span>
+              <strong id="alTaxOut">—</strong>
+            </div>
+            <div class="row">
+              <span class="muted">Annual leave after tax</span>
+              <strong id="alAfterTaxOut">—</strong>
+            </div>
 
-          <div class="row">
-            <span class="muted">Total after tax (approx)</span>
-            <strong id="totalAfterTaxOut">—</strong>
+            <div class="row">
+              <span class="muted">Total after tax (approx)</span>
+              <strong id="totalAfterTaxOut">—</strong>
+            </div>
           </div>
         </div>
       </details>
