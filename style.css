@@ -129,7 +129,8 @@ h1{
   gap:4px;
 }
 
-input{
+input,
+select{
   height:34px;
   border-radius:8px;
   border:1px solid #1e263d;
@@ -138,6 +139,10 @@ input{
   padding:0 10px;
   font-size:13px;
   width:100%;
+}
+
+select{
+  padding-right:26px;
 }
 
 /* Result section */
@@ -176,6 +181,12 @@ details summary::-webkit-details-marker{
 
 .note{
   margin:6px 0 0 0;
+}
+
+.divider{
+  border:0;
+  border-top:1px solid var(--line);
+  margin:6px 0;
 }
 
 /* Table */

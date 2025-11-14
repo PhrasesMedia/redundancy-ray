@@ -35,7 +35,7 @@
 
         <div class="row s8">
           <label class="lbl grow">
-            <span>AL hours accrued</span>
+            <span>Annual leave hours accrued</span>
             <input type="number" id="alHours" min="0" step="0.01" placeholder="e.g. 120" />
           </label>
           <label class="lbl">
@@ -46,9 +46,22 @@
 
         <label class="lbl">
           <span>Annual salary (AUD)</span>
-          <!-- Updated example income to 80,000 -->
           <input type="number" id="annualSalary" min="0" step="0.01" placeholder="e.g. 80000" />
         </label>
+
+        <div class="row s8">
+          <label class="lbl grow">
+            <span>Age group for tax</span>
+            <select id="ageGroup">
+              <option value="under60">Under 60</option>
+              <option value="60plus">60 or older</option>
+            </select>
+          </label>
+          <label class="lbl">
+            <span>Est. marginal tax rate (%)</span>
+            <input type="number" id="marginalRate" min="0" max="60" step="1" value="32" />
+          </label>
+        </div>
       </div>
     </section>
 
@@ -73,7 +86,7 @@
             <strong id="weeklyRateOut">—</strong>
           </div>
           <div class="row">
-            <span class="muted">Redundancy pay</span>
+            <span class="muted">Redundancy pay (gross)</span>
             <strong id="redundancyPayOut">—</strong>
           </div>
           <div class="row">
@@ -81,16 +94,50 @@
             <strong id="hourlyRateOut">—</strong>
           </div>
           <div class="row">
-            <span class="muted">Annual leave payout</span>
+            <span class="muted">Annual leave payout (gross)</span>
             <strong id="alPayoutOut">—</strong>
+          </div>
+
+          <hr class="divider" />
+
+          <div class="row">
+            <span class="muted">Tax-free redundancy (approx)</span>
+            <strong id="taxFreeRedundancyOut">—</strong>
+          </div>
+          <div class="row">
+            <span class="muted">Taxable redundancy (ETP)</span>
+            <strong id="taxableRedundancyOut">—</strong>
+          </div>
+          <div class="row">
+            <span class="muted">Tax on redundancy (ETP)</span>
+            <strong id="redundancyTaxOut">—</strong>
+          </div>
+          <div class="row">
+            <span class="muted">Redundancy after tax</span>
+            <strong id="redundancyAfterTaxOut">—</strong>
+          </div>
+
+          <div class="row">
+            <span class="muted">Tax on annual leave (approx)</span>
+            <strong id="alTaxOut">—</strong>
+          </div>
+          <div class="row">
+            <span class="muted">Annual leave after tax</span>
+            <strong id="alAfterTaxOut">—</strong>
+          </div>
+
+          <div class="row">
+            <span class="muted">Total after tax (approx)</span>
+            <strong id="totalAfterTaxOut">—</strong>
           </div>
         </div>
       </details>
 
       <button id="copyBtn" class="copy">Copy summary</button>
       <p class="note tiny">
-        Estimates only — actual entitlements depend on awards/agreements, small-business exemptions,
-        notice, LSL, and tax.
+        Estimates only — based on 2024–25 ATO thresholds for genuine redundancy and simple
+        assumptions for leave tax. Actual entitlements and tax depend on awards/agreements,
+        small-business exemptions, notice, LSL and your full tax position.
       </p>
     </section>
 
