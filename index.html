@@ -12,6 +12,8 @@
 </head>
 <body>
   <div class="app">
+
+    <!-- Header -->
     <header class="pad hero">
       <div class="hero-left">
         <img src="ray.png" alt="Ray, your redundancy guide" class="ray-avatar" />
@@ -25,9 +27,10 @@
       </div>
     </header>
 
-    <!-- Inputs (years only) -->
+    <!-- Inputs -->
     <section class="card pad">
       <div class="stack s8">
+
         <label class="lbl">
           <span>Full years with company</span>
           <input type="number" id="fullYears" min="0" step="1" placeholder="e.g. 6" />
@@ -38,6 +41,7 @@
             <span>Annual leave hours accrued</span>
             <input type="number" id="alHours" min="0" step="0.01" placeholder="e.g. 120" />
           </label>
+
           <label class="lbl">
             <span>Std hrs/wk</span>
             <input type="number" id="hoursPerWeek" min="1" step="1" value="38" />
@@ -57,17 +61,23 @@
               <option value="60plus">60 or older</option>
             </select>
           </label>
+
           <label class="lbl">
             <span>Est. marginal tax rate (%)</span>
             <input type="number" id="marginalRate" min="0" max="60" step="1" value="32" />
           </label>
         </div>
+
       </div>
     </section>
 
-    <!-- Result (compact) -->
+    <!-- Results -->
     <section class="card pad result">
-      <div class="muted small">Estimated payout (before tax)</div>
+
+      <div class="muted small" id="totalLabel">
+        Estimated payout (before tax)
+      </div>
+
       <div class="total" id="totalOut">—</div>
 
       <!-- After-tax toggle -->
@@ -81,27 +91,34 @@
 
       <details class="breakdown">
         <summary>Breakdown</summary>
+
         <div class="stack s6">
+
           <div class="row">
             <span class="muted">Years of service</span>
             <strong id="yearsOut">—</strong>
           </div>
+
           <div class="row">
             <span class="muted">Redundancy weeks</span>
             <strong id="redundancyWeeksOut">—</strong>
           </div>
+
           <div class="row">
             <span class="muted">Weekly rate</span>
             <strong id="weeklyRateOut">—</strong>
           </div>
+
           <div class="row">
             <span class="muted">Redundancy pay (gross)</span>
             <strong id="redundancyPayOut">—</strong>
           </div>
+
           <div class="row">
             <span class="muted">Hourly rate</span>
             <strong id="hourlyRateOut">—</strong>
           </div>
+
           <div class="row">
             <span class="muted">Annual leave payout (gross)</span>
             <strong id="alPayoutOut">—</strong>
@@ -109,20 +126,24 @@
 
           <hr class="divider" />
 
-          <!-- Tax section: hidden until toggle is on -->
+          <!-- Tax section (hidden until toggle) -->
           <div id="taxSection" class="tax-section hidden">
+
             <div class="row">
               <span class="muted">Tax-free redundancy (approx)</span>
               <strong id="taxFreeRedundancyOut">—</strong>
             </div>
+
             <div class="row">
               <span class="muted">Taxable redundancy (ETP)</span>
               <strong id="taxableRedundancyOut">—</strong>
             </div>
+
             <div class="row">
               <span class="muted">Tax on redundancy (ETP)</span>
               <strong id="redundancyTaxOut">—</strong>
             </div>
+
             <div class="row">
               <span class="muted">Redundancy after tax</span>
               <strong id="redundancyAfterTaxOut">—</strong>
@@ -132,6 +153,7 @@
               <span class="muted">Tax on annual leave (approx)</span>
               <strong id="alTaxOut">—</strong>
             </div>
+
             <div class="row">
               <span class="muted">Annual leave after tax</span>
               <strong id="alAfterTaxOut">—</strong>
@@ -141,27 +163,33 @@
               <span class="muted">Total after tax (approx)</span>
               <strong id="totalAfterTaxOut">—</strong>
             </div>
+
           </div>
+
         </div>
       </details>
 
       <button id="copyBtn" class="copy">Copy summary</button>
+
       <p class="note tiny">
         Estimates only — based on 2024–25 ATO thresholds for genuine redundancy and simple
         assumptions for leave tax. Actual entitlements and tax depend on awards/agreements,
-        small-business exemptions, notice, LSL and your full tax position.
+        small-business exemptions, notice, LSL, and your full tax position.
       </p>
+
     </section>
 
-    <!-- Reference table -->
+    <!-- Redundancy table -->
     <section class="pad">
       <details class="tableDetails">
         <summary>Redundancy weeks table</summary>
+
         <div class="table-wrap">
           <table>
             <thead>
               <tr><th>Continuous service</th><th>Weeks</th></tr>
             </thead>
+
             <tbody>
               <tr><td>≥1 &lt;2 years</td><td>4</td></tr>
               <tr><td>≥2 &lt;3 years</td><td>6</td></tr>
@@ -175,6 +203,7 @@
               <tr><td>≥10 years</td><td>12*</td></tr>
             </tbody>
           </table>
+
           <p class="hint tiny">*Per your provided table.</p>
         </div>
       </details>
@@ -183,6 +212,7 @@
     <footer class="pad foot">
       <small class="muted tiny">Redundancy Ray (AU) • Estimates only</small>
     </footer>
+
   </div>
 
   <script src="script.js"></script>

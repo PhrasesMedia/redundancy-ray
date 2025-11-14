@@ -6,6 +6,7 @@ const annualSalaryEl     = document.getElementById('annualSalary');
 const ageGroupEl         = document.getElementById('ageGroup');
 const marginalRateEl     = document.getElementById('marginalRate');
 
+const totalLabel         = document.getElementById('totalLabel');
 const totalOut           = document.getElementById('totalOut');
 const yearsOut           = document.getElementById('yearsOut');
 const redundancyWeeksOut = document.getElementById('redundancyWeeksOut');
@@ -86,8 +87,11 @@ function recalc() {
 
   // If everything is blank, reset UI
   if (!years && !annualSal && !alHours) {
+    totalOut.textContent = '—';
+    if (totalLabel) totalLabel.textContent = 'Estimated payout (before tax)';
+
     [
-      totalOut, yearsOut, redundancyWeeksOut,
+      yearsOut, redundancyWeeksOut,
       weeklyRateOut, redundancyPayOut, hourlyRateOut, alPayoutOut,
       taxFreeRedundancyOut, taxableRedundancyOut, redundancyTaxOut,
       redundancyAfterTaxOut, alTaxOut, alAfterTaxOut, totalAfterTaxOut
@@ -121,8 +125,7 @@ function recalc() {
 
   const totalAfterTax = redundancyAfterTax + alAfterTax;
 
-  // ---- Write gross fields ----
-  totalOut.textContent           = fmtCurrency0(totalGross);
+  // ---- Write gross & basic fields ----
   yearsOut.textContent           = years || 0;
   redundancyWeeksOut.textContent = fmtNumber(weeks, 1);
   weeklyRateOut.textContent      = fmtCurrency2(weeklyRate);
@@ -139,6 +142,19 @@ function recalc() {
   alTaxOut.textContent        = alTax ? fmtCurrency2(alTax) : '—';
   alAfterTaxOut.textContent   = fmtCurrency0(alAfterTax);
   totalAfterTaxOut.textContent= fmtCurrency0(totalAfterTax);
+
+  // ---- Update the big total + label depending on toggle ----
+  if (afterTaxToggle && afterTaxToggle.checked) {
+    totalOut.textContent = fmtCurrency0(totalAfterTax);
+    if (totalLabel) {
+      totalLabel.textContent = 'Estimated payout (after tax, approx)';
+    }
+  } else {
+    totalOut.textContent = fmtCurrency0(totalGross);
+    if (totalLabel) {
+      totalLabel.textContent = 'Estimated payout (before tax)';
+    }
+  }
 }
 
 // ===================== Copy summary =====================
@@ -233,11 +249,12 @@ afterTaxToggle.addEventListener('change', () => {
   } else {
     taxSection.classList.add('hidden');
   }
+  recalc(); // re-run so the big total & label swap
 });
 
 copyBtn.addEventListener('click', copySummary);
 
 // Initial state
-recalc();
 taxSection.classList.add('hidden');
 afterTaxToggle.checked = false;
+recalc();
