@@ -1,0 +1,2 @@
+# redundancy-ray
+Redundancy Calculator
