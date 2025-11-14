@@ -30,11 +30,14 @@ const copyBtn            = document.getElementById('copyBtn');
 // ===== Constants (2024–25 genuine redundancy thresholds) =====
 const TAX_FREE_BASE = 11985;
 const TAX_FREE_PER_YEAR = 5994;
-const ETP_CAP = 235000; // cap before top rate applies (we assume most people are under this)
+const ETP_CAP = 235000; // cap before top rate applies
 
 // ===== Helpers =====
 function num(el) {
-  const v = parseFloat(el.value);
+  // Be forgiving: strip commas/spaces just in case
+  if (!el || el.value == null) return 0;
+  const cleaned = String(el.value).replace(/[, ]+/g, '');
+  const v = parseFloat(cleaned);
   return Number.isFinite(v) ? v : 0;
 }
 
@@ -51,6 +54,7 @@ function fmtMoneyExact(value) {
   if (!Number.isFinite(value) || value <= 0) return '—';
   return value.toLocaleString('en-AU', {
     style: 'currency',
+    currency: 'AUD',
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   });
@@ -81,7 +85,7 @@ function getRedundancyWeeks(years) {
 function recalc() {
   const years       = num(fullYearsEl);
   const alHours     = num(alHoursEl);
-  const hrsPerWeek  = num(hoursPerWeekEl) || 38; // sensible default
+  const hrsPerWeek  = num(hoursPerWeekEl) || 38;
   const annualSal   = num(annualSalaryEl);
   const ageGroup    = ageGroupEl.value;
   let marginalRate  = num(marginalRateEl);
@@ -90,7 +94,7 @@ function recalc() {
   if (marginalRate > 60) marginalRate = 60;
   const marginalRateFrac = marginalRate / 100;
 
-  // If key inputs are missing, clear outputs
+  // If everything is blank, clear outputs
   if (!years && !annualSal && !alHours) {
     totalOut.textContent            = '—';
     yearsOut.textContent            = '—';
@@ -109,6 +113,7 @@ function recalc() {
     return;
   }
 
+  // Core calculations
   const weeks       = getRedundancyWeeks(years);
   const weeklyRate  = annualSal > 0 ? (annualSal / 52) : 0;
   const redundancyPay = weeklyRate * weeks;
@@ -124,11 +129,9 @@ function recalc() {
   const taxFreeRedundancy = Math.min(redundancyPay, taxFreeLimit);
   const taxableRedundancy = Math.max(0, redundancyPay - taxFreeRedundancy);
 
-  // ETP tax rate based on age group
   const isOver60 = ageGroup === '60plus';
   const eptRate = isOver60 ? 0.17 : 0.32;
 
-  // We assume taxable redundancy is under the ETP cap
   const redundancyTax = Math.min(taxableRedundancy, ETP_CAP) * eptRate;
   const redundancyAfterTax = taxFreeRedundancy + (taxableRedundancy - redundancyTax);
 
@@ -138,7 +141,7 @@ function recalc() {
 
   const totalAfterTax = redundancyAfterTax + alAfterTax;
 
-  // ===== Write to UI =====
+  // ===== Write to UI (gross) =====
   totalOut.textContent            = fmtMoney(totalGross);
   yearsOut.textContent            = years || '0';
   redundancyWeeksOut.textContent  = fmtNumber(weeks, 1);
@@ -147,6 +150,7 @@ function recalc() {
   hourlyRateOut.textContent       = hourlyRate > 0 ? '$' + fmtNumber(hourlyRate, 2) : '—';
   alPayoutOut.textContent         = fmtMoney(alPayout);
 
+  // ===== Write tax section (even if hidden) =====
   taxFreeRedundancyOut.textContent  = fmtMoney(taxFreeRedundancy);
   taxableRedundancyOut.textContent  = fmtMoney(taxableRedundancy);
   redundancyTaxOut.textContent      = redundancyTax > 0 ? fmtMoneyExact(redundancyTax) : '—';
