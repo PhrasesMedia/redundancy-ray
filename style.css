@@ -1,0 +1,123 @@
+:root{
+  --bg:#0b1020;
+  --card:#0f1426;
+  --muted:#97a0af;
+  --text:#e7e9ed;
+  --accent:#7aa2ff;
+  --line:#1b2033;
+  --good:#a7f3d0;
+}
+
+*{box-sizing:border-box;}
+
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font:13px/1.4 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  min-height:100%;
+}
+
+body{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+
+.app{
+  width:100%;
+  max-width:420px;
+  margin:24px 12px 40px;
+}
+
+.pad{padding:10px;}
+.stack{display:grid;}
+.s6{gap:6px;}
+.s8{gap:8px;}
+.row{display:flex;justify-content:space-between;align-items:center;}
+.small{font-size:12px;}
+.tiny{font-size:11px;}
+.muted{color:var(--muted);}
+.grow{flex:1;}
+
+h1{
+  margin:0;
+  font-size:18px;
+}
+.sub{
+  margin:2px 0 0 0;
+  font-size:13px;
+}
+
+.card{
+  background:var(--card);
+  margin:8px 0;
+  border:1px solid var(--line);
+  border-radius:10px;
+}
+
+.lbl{display:grid;gap:4px;}
+input{
+  height:34px;
+  border-radius:8px;
+  border:1px solid #1e263d;
+  background:#0a1022;
+  color:var(--text);
+  padding:0 10px;
+  font-size:13px;
+  width:100%;
+}
+
+.result .total{
+  font-size:22px;
+  font-variant-numeric:tabular-nums;
+  color:var(--good);
+  margin:4px 0 6px 0;
+  line-height:1.2;
+}
+
+details summary{
+  cursor:pointer;
+  color:var(--accent);
+  outline:none;
+  list-style:none;
+}
+details summary::-webkit-details-marker{display:none;}
+
+.copy{
+  width:100%;
+  margin-top:8px;
+  height:36px;
+  border-radius:8px;
+  border:1px solid #2a48ff;
+  background:#2237c5;
+  color:white;
+  cursor:pointer;
+  font-size:13px;
+}
+.copy:hover{filter:brightness(1.05);}
+
+.note{margin:6px 0 0 0;}
+
+.table-wrap{overflow:auto;}
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:12px;
+}
+thead th{
+  text-align:left;
+  color:#cbd5e1;
+  border-bottom:1px solid var(--line);
+  padding:6px 4px;
+}
+tbody td{
+  border-bottom:1px solid var(--line);
+  padding:6px 4px;
+  color:#d1d5db;
+}
+
+.foot{
+  padding-bottom:4px;
+}

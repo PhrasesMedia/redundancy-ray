@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Redundancy Helper (AU)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="pad">
+      <h1>Redundancy</h1>
+      <p class="sub">Quick AU estimate</p>
+    </header>
+
+    <!-- Inputs (years only) -->
+    <section class="card pad">
+      <div class="stack s8">
+        <label class="lbl">
+          <span>Full years with company</span>
+          <input type="number" id="fullYears" min="0" step="1" placeholder="e.g. 6" />
+        </label>
+
+        <div class="row s8">
+          <label class="lbl grow">
+            <span>AL hours accrued</span>
+            <input type="number" id="alHours" min="0" step="0.01" placeholder="e.g. 120" />
+          </label>
+          <label class="lbl">
+            <span>Std hrs/wk</span>
+            <input type="number" id="hoursPerWeek" min="1" step="1" value="38" />
+          </label>
+        </div>
+
+        <label class="lbl">
+          <span>Annual salary (AUD)</span>
+          <input type="number" id="annualSalary" min="0" step="0.01" placeholder="e.g. 92000" />
+        </label>
+      </div>
+    </section>
+
+    <!-- Result (compact) -->
+    <section class="card pad result">
+      <div class="muted small">Estimated payout (before tax)</div>
+      <div class="total" id="totalOut">—</div>
+
+      <details class="breakdown">
+        <summary>Breakdown</summary>
+        <div class="stack s6">
+          <div class="row">
+            <span class="muted">Years of service</span>
+            <strong id="yearsOut">—</strong>
+          </div>
+          <div class="row">
+            <span class="muted">Redundancy weeks</span>
+            <strong id="redundancyWeeksOut">—</strong>
+          </div>
+          <div class="row">
+            <span class="muted">Weekly rate</span>
+            <strong id="weeklyRateOut">—</strong>
+          </div>
+          <div class="row">
+            <span class="muted">Redundancy pay</span>
+            <strong id="redundancyPayOut">—</strong>
+          </div>
+          <div class="row">
+            <span class="muted">Hourly rate</span>
+            <strong id="hourlyRateOut">—</strong>
+          </div>
+          <div class="row">
+            <span class="muted">Annual leave payout</span>
+            <strong id="alPayoutOut">—</strong>
+          </div>
+        </div>
+      </details>
+
+      <button id="copyBtn" class="copy">Copy summary</button>
+      <p class="note tiny">
+        Estimates only — actual entitlements depend on awards/agreements, small-business exemptions,
+        notice, LSL, and tax.
+      </p>
+    </section>
+
+    <!-- Reference table -->
+    <section class="pad">
+      <details class="tableDetails">
+        <summary>Redundancy weeks table</summary>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Continuous service</th><th>Weeks</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>≥1 &lt;2 years</td><td>4</td></tr>
+              <tr><td>≥2 &lt;3 years</td><td>6</td></tr>
+              <tr><td>≥3 &lt;4 years</td><td>7</td></tr>
+              <tr><td>≥4 &lt;5 years</td><td>8</td></tr>
+              <tr><td>≥5 &lt;6 years</td><td>10</td></tr>
+              <tr><td>≥6 &lt;7 years</td><td>11</td></tr>
+              <tr><td>≥7 &lt;8 years</td><td>13</td></tr>
+              <tr><td>≥8 &lt;9 years</td><td>14</td></tr>
+              <tr><td>≥9 &lt;10 years</td><td>16</td></tr>
+              <tr><td>≥10 years</td><td>12*</td></tr>
+            </tbody>
+          </table>
+          <p class="hint tiny">*Per your provided table.</p>
+        </div>
+      </details>
+    </section>
+
+    <footer class="pad foot">
+      <small class="muted tiny">Redundancy Helper (AU) • Estimates only</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
