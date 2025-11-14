@@ -59,13 +59,13 @@ function recalc() {
 
   // If key inputs are missing, clear outputs
   if (!years && !annualSal && !alHours) {
-    totalOut.textContent          = '—';
-    yearsOut.textContent          = '—';
-    redundancyWeeksOut.textContent= '—';
-    weeklyRateOut.textContent     = '—';
-    redundancyPayOut.textContent  = '—';
-    hourlyRateOut.textContent     = '—';
-    alPayoutOut.textContent       = '—';
+    totalOut.textContent           = '—';
+    yearsOut.textContent           = '—';
+    redundancyWeeksOut.textContent = '—';
+    weeklyRateOut.textContent      = '—';
+    redundancyPayOut.textContent   = '—';
+    hourlyRateOut.textContent      = '—';
+    alPayoutOut.textContent        = '—';
     return;
   }
 
@@ -105,7 +105,7 @@ async function copySummary() {
   const total       = redundancyPay + alPayout;
 
   const lines = [
-    `Redundancy Helper (AU) – rough estimate (before tax)`,
+    `Redundancy Ray (AU) – rough estimate (before tax)`,
     ``,
     `Total estimate: ${fmtMoney(total)}`,
     `Years of service: ${years || 0} year(s)`,

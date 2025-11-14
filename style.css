@@ -27,11 +27,27 @@ body{
   align-items:flex-start;
 }
 
-/* Wider app layout */
+/* Center content better on the page */
 .app{
   width:100%;
-  max-width:720px;      /* wider than before */
-  margin:32px auto 60px;
+  max-width:720px;
+  margin:80px auto 80px;       /* pulls content towards middle */
+}
+
+/* On large desktops, push a bit further down for nicer centering */
+@media (min-width:1100px){
+  .app{
+    margin-top:120px;
+    margin-bottom:120px;
+  }
+}
+
+/* On small screens, keep content closer to the top */
+@media (max-width:500px){
+  .app{
+    margin-top:32px;
+    margin-bottom:40px;
+  }
 }
 
 /* Spacing helpers */
@@ -70,7 +86,7 @@ body{
   flex-shrink:0;
 }
 
-/* Stack hero on very small screens */
+/* Slight tweak on very small screens */
 @media (max-width:500px){
   .hero{
     gap:12px;
