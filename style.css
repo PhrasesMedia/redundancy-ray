@@ -21,18 +21,18 @@ html,body{
   min-height:100%;
 }
 
-/* Flex wrapper so we can vertically center on larger screens */
+/* Flex wrapper */
 body{
   display:flex;
   justify-content:center;
-  align-items:flex-start;  /* mobile/tablet: content nearer top */
+  align-items:flex-start;
   min-height:100vh;
 }
 
-/* True vertical centering for desktop screens */
+/* Desktop vertical centering */
 @media (min-width:900px){
   body{
-    align-items:center;   /* centers .app vertically */
+    align-items:center;
   }
 }
 
@@ -40,10 +40,9 @@ body{
 .app{
   width:100%;
   max-width:720px;
-  margin:40px 20px;       /* nice spacing on mobile/tablet */
+  margin:40px 20px;
 }
 
-/* On desktop, let body centering handle vertical; just center horizontally */
 @media (min-width:900px){
   .app{
     margin:0 auto;
@@ -61,7 +60,7 @@ body{
 .muted{color:var(--muted);}
 .grow{flex:1;}
 
-/* Hero with Ray */
+/* Header / Hero */
 .hero{
   display:flex;
   gap:20px;
@@ -69,28 +68,18 @@ body{
   padding-bottom:12px;
 }
 
-.hero-left{
-  flex:0 0 auto;
-}
-
-.hero-right{
-  flex:1 1 auto;
-}
+.hero-left{flex:0 0 auto;}
+.hero-right{flex:1 1 auto;}
 
 .ray-avatar{
   width:64px;
   height:64px;
   border-radius:50%;
   object-fit:cover;
-  display:block;
-  flex-shrink:0;
 }
 
-/* Slight tweak on very small screens */
 @media (max-width:500px){
-  .hero{
-    gap:12px;
-  }
+  .hero{gap:12px;}
 }
 
 /* Typography */
@@ -106,14 +95,9 @@ h1{
   margin-top:4px;
 }
 
-/* Slightly bigger text on larger screens */
 @media (min-width:600px){
-  body{
-    font-size:15px;
-  }
-  h1{
-    font-size:24px;
-  }
+  body{font-size:15px;}
+  h1{font-size:24px;}
 }
 
 /* Cards & inputs */
@@ -154,14 +138,14 @@ select{
   line-height:1.2;
 }
 
-/* After-tax toggle row */
+/* Toggle row styling */
 .after-tax-toggle{
   margin-top:6px;
   margin-bottom:4px;
   gap:10px;
 }
 
-/* Toggle switch styling */
+/* Toggle switch */
 .switch{
   position:relative;
   display:inline-block;
@@ -199,11 +183,12 @@ select{
   transform:translateX(20px);
 }
 
-/* tax section hidden class */
+/* Hidden class */
 .hidden{
   display:none;
 }
 
+/* Details summary */
 details summary{
   cursor:pointer;
   color:var(--accent);
@@ -214,6 +199,7 @@ details summary::-webkit-details-marker{
   display:none;
 }
 
+/* Primary button */
 .copy{
   width:100%;
   margin-top:8px;
@@ -229,6 +215,7 @@ details summary::-webkit-details-marker{
   filter:brightness(1.05);
 }
 
+/* Notes */
 .note{
   margin:6px 0 0 0;
 }
@@ -266,15 +253,19 @@ tbody td{
   padding-bottom:4px;
 }
 
-/* Mortgage helper button – same style, slightly more muted */
-.mortgage-btn{
-  background:#111827;
-  border-color:#374151;
+/* Mortgage helper button – force blue */
+button.mortgage-btn {
+  background:#2237c5 !important;
+  border:1px solid #2a48ff !important;
+  color:white !important;
   margin-top:8px;
   margin-bottom:4px;
 }
+button.mortgage-btn:hover {
+  filter:brightness(1.05);
+}
 
-/* Mortgage helper panel */
+/* Mortgage panel */
 .mortgage{
   margin-top:8px;
 }
