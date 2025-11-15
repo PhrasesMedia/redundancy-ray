@@ -169,6 +169,65 @@
         </div>
       </details>
 
+      <!-- Mortgage helper toggle button -->
+      <button id="mortgageToggleBtn" class="copy mortgage-btn" type="button">
+        Mortgage coverage helper
+      </button>
+
+      <!-- Mortgage helper panel (starts hidden) -->
+      <div id="mortgageSection" class="card pad mortgage hidden">
+        <h3>Mortgage coverage helper</h3>
+        <p class="small muted">
+          Estimate how long your redundancy could cover your home loan repayments.
+        </p>
+
+        <div class="stack s8">
+          <div class="row s8">
+            <label class="lbl grow">
+              <span>Initial loan amount (AUD)</span>
+              <input
+                type="number"
+                id="mortgageLoanAmount"
+                min="0"
+                step="1000"
+                placeholder="e.g. 600000"
+              />
+            </label>
+
+            <label class="lbl">
+              <span>Initial loan term (years)</span>
+              <input
+                type="number"
+                id="mortgageLoanTerm"
+                min="1"
+                step="1"
+                placeholder="e.g. 30"
+              />
+            </label>
+          </div>
+
+          <label class="lbl">
+            <span>Interest rate (% p.a.)</span>
+            <input
+              type="number"
+              id="mortgageInterestRate"
+              min="0"
+              step="0.01"
+              placeholder="e.g. 5.2"
+            />
+          </label>
+
+          <p class="small muted">
+            Enter your loan amount, term and interest rate to estimate coverage.
+          </p>
+
+          <div class="row">
+            <span class="muted small">Estimated coverage</span>
+            <strong id="mortgageCoverageOut">—</strong>
+          </div>
+        </div>
+      </div>
+
       <button id="copyBtn" class="copy">Copy summary</button>
 
       <p class="note tiny">

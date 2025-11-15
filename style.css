@@ -265,3 +265,25 @@ tbody td{
 .foot{
   padding-bottom:4px;
 }
+
+/* Mortgage helper button – same style, slightly more muted */
+.mortgage-btn{
+  background:#111827;
+  border-color:#374151;
+  margin-top:8px;
+  margin-bottom:4px;
+}
+
+/* Mortgage helper panel */
+.mortgage{
+  margin-top:8px;
+}
+
+.mortgage h3{
+  margin:0 0 4px 0;
+  font-size:14px;
+}
+
+.mortgage p{
+  margin:0 0 8px 0;
+}
