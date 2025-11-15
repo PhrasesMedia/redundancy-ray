@@ -199,6 +199,7 @@ const mortgageSection         = document.getElementById('mortgageSection');
 const mortgageLoanAmountEl    = document.getElementById('mortgageLoanAmount');
 const mortgageLoanTermEl      = document.getElementById('mortgageLoanTerm');
 const mortgageInterestRateEl  = document.getElementById('mortgageInterestRate');
+const mortgageInterestOnlyEl  = document.getElementById('mortgageInterestOnly');
 const mortgageCoverageOut     = document.getElementById('mortgageCoverageOut');
 
 function getCurrentPayoutAmount() {
@@ -210,7 +211,7 @@ function getCurrentPayoutAmount() {
   return Number.isFinite(val) ? val : 0;
 }
 
-// Standard amortising loan repayment
+// Standard amortising loan repayment (principal + interest)
 function calcMonthlyRepayment(principal, annualRate, years) {
   const P = principal;
   const r = (annualRate / 100) / 12;
@@ -233,23 +234,33 @@ function updateMortgageCoverage() {
   const loan   = parseFloat(mortgageLoanAmountEl?.value || '') || 0;
   const term   = parseFloat(mortgageLoanTermEl?.value || '') || 0;
   const rate   = parseFloat(mortgageInterestRateEl?.value || '') || 0;
+  const interestOnly = mortgageInterestOnlyEl && mortgageInterestOnlyEl.checked;
 
   if (!payout || !loan || !term || rate < 0) {
     mortgageCoverageOut.textContent = '—';
     return;
   }
 
-  const monthly = calcMonthlyRepayment(loan, rate, term);
+  let monthly;
+
+  if (interestOnly) {
+    // Interest-only: monthly interest only
+    monthly = loan * (rate / 100) / 12;
+  } else {
+    // Principal + interest
+    monthly = calcMonthlyRepayment(loan, rate, term);
+  }
+
   if (!monthly || monthly <= 0) {
     mortgageCoverageOut.textContent = '—';
     return;
   }
 
   const months = payout / monthly;
-  const years  = months / 12;
+  const weeks  = months * 4.345; // approx weeks per month
 
   mortgageCoverageOut.textContent =
-    `${months.toFixed(1)} months (${years.toFixed(1)} years)`;
+    `${weeks.toFixed(0)} weeks / ${months.toFixed(1)} months`;
 }
 
 // Toggle open/closed
@@ -277,6 +288,10 @@ if (mortgageToggleBtn && mortgageSection) {
   if (!el) return;
   el.addEventListener('input', updateMortgageCoverage);
 });
+
+if (mortgageInterestOnlyEl) {
+  mortgageInterestOnlyEl.addEventListener('change', updateMortgageCoverage);
+}
 
 // ===================== Wire up recalculation =====================
 
