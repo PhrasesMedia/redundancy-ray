@@ -199,7 +199,7 @@ details summary::-webkit-details-marker{
   display:none;
 }
 
-/* Primary button */
+/* Primary button (Copy summary & any .copy button) */
 .copy{
   width:100%;
   margin-top:8px;
@@ -253,15 +253,15 @@ tbody td{
   padding-bottom:4px;
 }
 
-/* Mortgage helper button – force blue */
-button.mortgage-btn {
+/* Mortgage helper button – force blue via ID */
+#mortgageToggleBtn{
   background:#2237c5 !important;
   border:1px solid #2a48ff !important;
   color:white !important;
   margin-top:8px;
   margin-bottom:4px;
 }
-button.mortgage-btn:hover {
+#mortgageToggleBtn:hover{
   filter:brightness(1.05);
 }
 
