@@ -76,106 +76,133 @@
     <!-- Results -->
     <section class="card pad result">
 
-      <div class="muted small" id="totalLabel">Estimated payout (before tax)</div>
-      <div class="total" id="totalOut">—</div>
+      <!-- New flex row: main results + Ray Recommends -->
+      <div id="ray-results-row">
 
-      <!-- After-tax toggle -->
-      <div class="row after-tax-toggle">
-        <span class="muted small">Show after-tax amounts</span>
-        <label class="switch">
-          <input type="checkbox" id="afterTaxToggle" />
-          <span class="slider"></span>
-        </label>
-      </div>
+        <!-- Left: existing results content -->
+        <div id="ray-left">
+          <div class="muted small" id="totalLabel">Estimated payout (before tax)</div>
+          <div class="total" id="totalOut">—</div>
 
-      <details class="breakdown">
-        <summary>Breakdown</summary>
-
-        <div class="stack s6">
-
-          <div class="row"><span class="muted">Years of service</span><strong id="yearsOut">—</strong></div>
-          <div class="row"><span class="muted">Redundancy weeks</span><strong id="redundancyWeeksOut">—</strong></div>
-          <div class="row"><span class="muted">Weekly rate</span><strong id="weeklyRateOut">—</strong></div>
-          <div class="row"><span class="muted">Redundancy pay (gross)</span><strong id="redundancyPayOut">—</strong></div>
-          <div class="row"><span class="muted">Hourly rate</span><strong id="hourlyRateOut">—</strong></div>
-          <div class="row"><span class="muted">Annual leave payout (gross)</span><strong id="alPayoutOut">—</strong></div>
-
-          <hr class="divider" />
-
-          <!-- Tax section -->
-          <div id="taxSection" class="tax-section hidden">
-
-            <div class="row"><span class="muted">Tax-free redundancy (approx)</span><strong id="taxFreeRedundancyOut">—</strong></div>
-            <div class="row"><span class="muted">Taxable redundancy (ETP)</span><strong id="taxableRedundancyOut">—</strong></div>
-            <div class="row"><span class="muted">Tax on redundancy (ETP)</span><strong id="redundancyTaxOut">—</strong></div>
-            <div class="row"><span class="muted">Redundancy after tax</span><strong id="redundancyAfterTaxOut">—</strong></div>
-            <div class="row"><span class="muted">Tax on annual leave (approx)</span><strong id="alTaxOut">—</strong></div>
-            <div class="row"><span class="muted">Annual leave after tax</span><strong id="alAfterTaxOut">—</strong></div>
-            <div class="row"><span class="muted">Total after tax (approx)</span><strong id="totalAfterTaxOut">—</strong></div>
-
-          </div>
-
-        </div>
-      </details>
-
-      <!-- Mortgage helper toggle button -->
-      <button id="mortgageToggleBtn" class="copy mortgage-btn" type="button">
-        Mortgage coverage helper
-      </button>
-
-      <!-- Mortgage helper panel -->
-      <div id="mortgageSection" class="card pad mortgage hidden">
-
-        <h3>Mortgage coverage helper</h3>
-        <p class="small muted">
-          Estimate how long your redundancy could cover your home loan repayments.
-        </p>
-
-        <div class="stack s8">
-
-          <div class="row s8">
-            <label class="lbl grow">
-              <span>Initial loan amount (AUD)</span>
-              <input type="number" id="mortgageLoanAmount" min="0" step="1000" placeholder="e.g. 600000" />
-            </label>
-
-            <label class="lbl">
-              <span>Initial loan term (years)</span>
-              <input type="number" id="mortgageLoanTerm" min="1" step="1" placeholder="e.g. 30" />
-            </label>
-          </div>
-
-          <label class="lbl">
-            <span>Interest rate (% p.a.)</span>
-            <input type="number" id="mortgageInterestRate" min="0" step="0.01" placeholder="e.g. 5.2" />
-          </label>
-
-          <!-- Interest-only toggle -->
+          <!-- After-tax toggle -->
           <div class="row after-tax-toggle">
-            <span class="muted small">Interest-only repayments</span>
+            <span class="muted small">Show after-tax amounts</span>
             <label class="switch">
-              <input type="checkbox" id="mortgageInterestOnly" />
+              <input type="checkbox" id="afterTaxToggle" />
               <span class="slider"></span>
             </label>
           </div>
 
-          <p class="small muted">Enter your loan amount, term and interest rate to estimate coverage.</p>
+          <details class="breakdown">
+            <summary>Breakdown</summary>
 
-          <div class="row">
-            <span class="muted small">Estimated coverage</span>
-            <strong id="mortgageCoverageOut">—</strong>
+            <div class="stack s6">
+
+              <div class="row"><span class="muted">Years of service</span><strong id="yearsOut">—</strong></div>
+              <div class="row"><span class="muted">Redundancy weeks</span><strong id="redundancyWeeksOut">—</strong></div>
+              <div class="row"><span class="muted">Weekly rate</span><strong id="weeklyRateOut">—</strong></div>
+              <div class="row"><span class="muted">Redundancy pay (gross)</span><strong id="redundancyPayOut">—</strong></div>
+              <div class="row"><span class="muted">Hourly rate</span><strong id="hourlyRateOut">—</strong></div>
+              <div class="row"><span class="muted">Annual leave payout (gross)</span><strong id="alPayoutOut">—</strong></div>
+
+              <hr class="divider" />
+
+              <!-- Tax section -->
+              <div id="taxSection" class="tax-section hidden">
+
+                <div class="row"><span class="muted">Tax-free redundancy (approx)</span><strong id="taxFreeRedundancyOut">—</strong></div>
+                <div class="row"><span class="muted">Taxable redundancy (ETP)</span><strong id="taxableRedundancyOut">—</strong></div>
+                <div class="row"><span class="muted">Tax on redundancy (ETP)</span><strong id="redundancyTaxOut">—</strong></div>
+                <div class="row"><span class="muted">Redundancy after tax</span><strong id="redundancyAfterTaxOut">—</strong></div>
+                <div class="row"><span class="muted">Tax on annual leave (approx)</span><strong id="alTaxOut">—</strong></div>
+                <div class="row"><span class="muted">Annual leave after tax</span><strong id="alAfterTaxOut">—</strong></div>
+                <div class="row"><span class="muted">Total after tax (approx)</span><strong id="totalAfterTaxOut">—</strong></div>
+
+              </div>
+
+            </div>
+          </details>
+
+          <!-- Mortgage helper toggle button -->
+          <button id="mortgageToggleBtn" class="copy mortgage-btn" type="button">
+            Mortgage coverage helper
+          </button>
+
+          <!-- Mortgage helper panel -->
+          <div id="mortgageSection" class="card pad mortgage hidden">
+
+            <h3>Mortgage coverage helper</h3>
+            <p class="small muted">
+              Estimate how long your redundancy could cover your home loan repayments.
+            </p>
+
+            <div class="stack s8">
+
+              <div class="row s8">
+                <label class="lbl grow">
+                  <span>Initial loan amount (AUD)</span>
+                  <input type="number" id="mortgageLoanAmount" min="0" step="1000" placeholder="e.g. 600000" />
+                </label>
+
+                <label class="lbl">
+                  <span>Initial loan term (years)</span>
+                  <input type="number" id="mortgageLoanTerm" min="1" step="1" placeholder="e.g. 30" />
+                </label>
+              </div>
+
+              <label class="lbl">
+                <span>Interest rate (% p.a.)</span>
+                <input type="number" id="mortgageInterestRate" min="0" step="0.01" placeholder="e.g. 5.2" />
+              </label>
+
+              <!-- Interest-only toggle -->
+              <div class="row after-tax-toggle">
+                <span class="muted small">Interest-only repayments</span>
+                <label class="switch">
+                  <input type="checkbox" id="mortgageInterestOnly" />
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <p class="small muted">Enter your loan amount, term and interest rate to estimate coverage.</p>
+
+              <div class="row">
+                <span class="muted small">Estimated coverage</span>
+                <strong id="mortgageCoverageOut">—</strong>
+              </div>
+
+            </div>
           </div>
 
+          <button id="copyBtn" class="copy">Copy summary</button>
+
+          <p class="note tiny">
+            Estimates only — based on 2024–25 ATO thresholds for genuine redundancy and simple
+            assumptions for leave tax. Actual entitlements and tax depend on awards/agreements,
+            small-business exemptions, notice, LSL, and your full tax position.
+          </p>
         </div>
-      </div>
 
-      <button id="copyBtn" class="copy">Copy summary</button>
+        <!-- Right: Ray Recommends (Amazon affiliate links) -->
+        <aside id="ray-right" aria-label="Ray Recommends">
+          <h3 class="ray-recommend-heading">Ray Recommends</h3>
 
-      <p class="note tiny">
-        Estimates only — based on 2024–25 ATO thresholds for genuine redundancy and simple
-        assumptions for leave tax. Actual entitlements and tax depend on awards/agreements,
-        small-business exemptions, notice, LSL, and your full tax position.
-      </p>
+          <a class="ray-link" href="https://amzn.to/YOUR_LINK_1" target="_blank" rel="noopener noreferrer">
+            📘 Job interview guide
+          </a>
+
+          <a class="ray-link" href="https://amzn.to/YOUR_LINK_2" target="_blank" rel="noopener noreferrer">
+            💼 Work-from-home laptop stand
+          </a>
+
+          <a class="ray-link" href="https://amzn.to/YOUR_LINK_3" target="_blank" rel="noopener noreferrer">
+            ✨ Resume & cover letter templates
+          </a>
+
+          <!-- Add or change links as you like, just keep the same structure -->
+        </aside>
+
+      </div> <!-- /#ray-results-row -->
 
     </section>
 
