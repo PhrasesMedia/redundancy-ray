@@ -91,7 +91,7 @@ function scheduleRayRecommends() {
     requestAnimationFrame(() => {
       rayRecommendsEl.classList.add('visible');
     });
-  }, 10000); // 10 seconds after latest calculation
+  }, 7000); // 7 seconds after latest calculation
 }
 
 // ===================== Core calculation =====================
@@ -173,7 +173,7 @@ function recalc() {
   // Keep mortgage helper in sync with whichever total is currently shown
   updateMortgageCoverage();
 
-  // Schedule Ray Recommends to appear 10 seconds after this calculation
+  // Schedule Ray Recommends to appear 7 seconds after this calculation
   scheduleRayRecommends();
 }
 
