@@ -278,3 +278,83 @@ tbody td{
 .mortgage p{
   margin:0 0 8px 0;
 }
+
+/* ====================================================== */
+/* ⭐ RAY RECOMMENDS – DARK BABYPAY-STYLE FADE-IN CARDS   */
+/* ====================================================== */
+
+.ray-recommends {
+  margin-top: 18px;
+  text-align: left;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(4px);
+  display: none;
+  transition:
+    opacity 1.0s ease 0.25s,
+    transform 1.0s ease 0.25s;
+}
+
+.ray-recommends.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ray-recommends-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.ray-recommends-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ray-recommends-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+}
+
+.ray-recommends-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.ray-recommends-name {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.ray-recommends-link {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.ray-recommends-arrow {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+/* Hover soft lift */
+.ray-recommends-card:hover {
+  background-color: rgba(122, 162, 255, 0.18);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}

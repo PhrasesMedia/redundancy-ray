@@ -118,9 +118,10 @@
         </div>
       </details>
 
-      <!-- Ray Recommends block (inside results, above mortgage helper) -->
+      <!-- Ray Recommends (inside Estimated payout section, above mortgage helper) -->
       <div id="rayRecommends" class="ray-recommends">
         <div class="ray-recommends-title">Recommended by Ray (Affiliate)</div>
+
         <div class="ray-recommends-list">
 
           <a class="ray-recommends-card" href="https://amzn.to/4rgIict" target="_blank" rel="noopener noreferrer">
@@ -245,19 +246,18 @@
 
   <script src="script.js"></script>
 
-  <!-- Delayed reveal for Ray Recommends (like BabyPay product section) -->
+  <!-- Delayed reveal for Ray Recommends (BabyPay-style) -->
   <script>
     window.addEventListener('load', function () {
-      const rayBlock = document.getElementById('rayRecommends');
+      var rayBlock = document.getElementById('rayRecommends');
       if (!rayBlock) return;
 
       setTimeout(function () {
-        // start visible & animate in
         rayBlock.style.display = 'block';
         requestAnimationFrame(function () {
           rayBlock.classList.add('visible');
         });
-      }, 3000); // ~3 seconds, tweak if you want
+      }, 2500); // 2.5s delay – tweak if you like
     });
   </script>
 </body>
