@@ -245,20 +245,5 @@
   </div>
 
   <script src="script.js"></script>
-
-  <!-- Delayed reveal for Ray Recommends (BabyPay-style) -->
-  <script>
-    window.addEventListener('load', function () {
-      var rayBlock = document.getElementById('rayRecommends');
-      if (!rayBlock) return;
-
-      setTimeout(function () {
-        rayBlock.style.display = 'block';
-        requestAnimationFrame(function () {
-          rayBlock.classList.add('visible');
-        });
-      }, 2500); // 2.5s delay – tweak if you like
-    });
-  </script>
 </body>
 </html>

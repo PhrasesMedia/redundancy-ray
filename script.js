@@ -34,6 +34,9 @@ const totalAfterTaxOut       = document.getElementById('totalAfterTaxOut');
 // Copy button
 const copyBtn          = document.getElementById('copyBtn');
 
+// Ray Recommends block
+const rayRecommendsEl  = document.getElementById('rayRecommends');
+
 // ===================== Helpers =====================
 
 function formatMoney(value, decimals = 0) {
@@ -64,6 +67,32 @@ function getRedundancyWeeks(fullYears) {
 // Approx 2024–25 genuine redundancy tax-free cap
 const TAX_FREE_BASE    = 12541;  // base amount (approx)
 const TAX_FREE_PER_YR  = 6266;   // per completed year (approx)
+
+// ===================== Ray Recommends timing =====================
+
+let rayRecommendsTimeoutId = null;
+
+function hideRayRecommendsImmediately() {
+  if (!rayRecommendsEl) return;
+  clearTimeout(rayRecommendsTimeoutId);
+  rayRecommendsEl.classList.remove('visible');
+  rayRecommendsEl.style.display = 'none';
+}
+
+function scheduleRayRecommends() {
+  if (!rayRecommendsEl) return;
+
+  clearTimeout(rayRecommendsTimeoutId);
+  rayRecommendsEl.classList.remove('visible');
+  rayRecommendsEl.style.display = 'none';
+
+  rayRecommendsTimeoutId = setTimeout(() => {
+    rayRecommendsEl.style.display = 'block';
+    requestAnimationFrame(() => {
+      rayRecommendsEl.classList.add('visible');
+    });
+  }, 10000); // 10 seconds after latest calculation
+}
 
 // ===================== Core calculation =====================
 
@@ -99,6 +128,9 @@ function recalc() {
     if (taxSection) taxSection.classList.add('hidden');
     if (totalLabel) totalLabel.textContent = 'Estimated payout (before tax)';
     updateMortgageCoverage(); // keep mortgage panel in sync
+
+    // Hide Ray Recommends if there is no payout
+    hideRayRecommendsImmediately();
     return;
   }
 
@@ -140,6 +172,9 @@ function recalc() {
 
   // Keep mortgage helper in sync with whichever total is currently shown
   updateMortgageCoverage();
+
+  // Schedule Ray Recommends to appear 10 seconds after this calculation
+  scheduleRayRecommends();
 }
 
 // ===================== Copy summary =====================
