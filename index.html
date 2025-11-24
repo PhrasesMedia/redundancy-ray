@@ -119,24 +119,27 @@
       </details>
 
       <!-- Ray Recommends block (inside results, above mortgage helper) -->
-      <div class="ray-panel">
-        <h3 class="ray-recommend-heading">Ray Recommends (Affiliate)</h3>
+      <div id="rayRecommends" class="ray-recommends">
+        <div class="ray-recommends-title">Recommended by Ray (Affiliate)</div>
+        <div class="ray-recommends-list">
 
-        <a class="ray-card" href="https://amzn.to/4rgIict" target="_blank" rel="noopener noreferrer">
-          <div class="ray-card-main">
-            <span class="ray-card-title">The LinkedIn Edge</span>
-            <span class="ray-card-sub">View on Amazon</span>
-          </div>
-          <span class="ray-card-arrow">›</span>
-        </a>
+          <a class="ray-recommends-card" href="https://amzn.to/4rgIict" target="_blank" rel="noopener noreferrer">
+            <div class="ray-recommends-main">
+              <div class="ray-recommends-name">The LinkedIn Edge</div>
+              <div class="ray-recommends-link">View on Amazon</div>
+            </div>
+            <span class="ray-recommends-arrow">›</span>
+          </a>
 
-        <a class="ray-card" href="https://amzn.to/3XMaRAR" target="_blank" rel="noopener noreferrer">
-          <div class="ray-card-main">
-            <span class="ray-card-title">Career Workbook</span>
-            <span class="ray-card-sub">View on Amazon</span>
-          </div>
-          <span class="ray-card-arrow">›</span>
-        </a>
+          <a class="ray-recommends-card" href="https://amzn.to/3XMaRAR" target="_blank" rel="noopener noreferrer">
+            <div class="ray-recommends-main">
+              <div class="ray-recommends-name">Career Workbook</div>
+              <div class="ray-recommends-link">View on Amazon</div>
+            </div>
+            <span class="ray-recommends-arrow">›</span>
+          </a>
+
+        </div>
       </div>
       <!-- End Ray Recommends -->
 
@@ -241,5 +244,21 @@
   </div>
 
   <script src="script.js"></script>
+
+  <!-- Delayed reveal for Ray Recommends (like BabyPay product section) -->
+  <script>
+    window.addEventListener('load', function () {
+      const rayBlock = document.getElementById('rayRecommends');
+      if (!rayBlock) return;
+
+      setTimeout(function () {
+        // start visible & animate in
+        rayBlock.style.display = 'block';
+        requestAnimationFrame(function () {
+          rayBlock.classList.add('visible');
+        });
+      }, 3000); // ~3 seconds, tweak if you want
+    });
+  </script>
 </body>
 </html>
