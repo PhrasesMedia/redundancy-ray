@@ -358,3 +358,36 @@ tbody td{
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
+
+/* ====================================================== */
+/* ⭐ LAYOUT: RAY NEXT TO ESTIMATED PAYOUT                */
+/* ====================================================== */
+
+/* Top row: payout on the left, Ray Recommends on the right */
+.result-top-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+}
+
+.result-main-header{
+  flex:1 1 auto;
+  min-width:0;
+}
+
+/* When Ray is inline beside the total */
+.ray-recommends-inline{
+  flex:0 0 240px;
+  margin-top:0;
+}
+
+/* Stack on mobile so it doesn't feel cramped */
+@media (max-width:700px){
+  .result-top-row{
+    flex-direction:column;
+  }
+  .ray-recommends-inline{
+    width:100%;
+  }
+}
