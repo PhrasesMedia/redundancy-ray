@@ -76,7 +76,7 @@
     <!-- Results -->
     <section class="card pad result">
 
-      <!-- TOP ROW: payout + Ray Recommends side by side -->
+      <!-- TOP ROW: payout + Ray Recommends side by side / stacked -->
       <div class="result-top-row">
         <div class="result-main-header">
           <div class="muted small" id="totalLabel">Estimated payout (before tax)</div>
@@ -84,7 +84,19 @@
         </div>
 
         <div id="rayRecommends" class="ray-recommends ray-recommends-inline">
-          <div class="ray-recommends-title">Recommended by Ray (Affiliate)</div>
+          <!-- Ray + heading -->
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <img
+              src="ray.png"
+              alt="Ray recommends"
+              class="ray-avatar"
+              style="width:32px;height:32px;"
+            />
+            <div>
+              <div class="ray-recommends-title">Recommended by Ray (Affiliate)</div>
+              <div class="muted tiny">Helpful picks if you’re planning your next move.</div>
+            </div>
+          </div>
 
           <div class="ray-recommends-list">
 
