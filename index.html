@@ -74,32 +74,36 @@
     </section>
 
     <!-- Results -->
-    <section class="card pad result">
+    <section class="card pad result" style="min-height:auto;">
 
-      <!-- TOP ROW: payout + Ray Recommends side by side / stacked -->
+      <!-- After-tax toggle – now at the very top of the card -->
+      <div class="row after-tax-toggle" style="margin-top:0; margin-bottom:8px;">
+        <span class="muted small">Show after-tax amounts</span>
+        <label class="switch">
+          <input type="checkbox" id="afterTaxToggle" />
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <!-- TOP ROW: payout + Ray Recommends -->
       <div class="result-top-row">
         <div class="result-main-header">
           <div class="muted small" id="totalLabel">Estimated payout (before tax)</div>
           <div class="total" id="totalOut">—</div>
         </div>
 
-        <div id="rayRecommends" class="ray-recommends ray-recommends-inline" style="padding-left:0;">
+        <!-- Ray recommends (with Ray picture, kept high on the card) -->
+        <div id="rayRecommends" class="ray-recommends ray-recommends-inline">
 
-          <!-- Ray + heading (tight spacing) -->
-          <div style="
-            display:flex;
-            align-items:center;
-            gap:6px;
-            margin-bottom:10px;
-            padding:0;
-          ">
+          <!-- Ray + heading -->
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
             <img
               src="ray.png"
               alt="Ray recommends"
               class="ray-avatar"
               style="width:30px;height:30px;margin:0;"
             />
-            <div style="margin:0;padding:0;">
+            <div style="margin:0;">
               <div class="ray-recommends-title" style="margin:0;">Recommended by Ray (Affiliate)</div>
               <div class="muted tiny" style="margin:0;">Helpful picks if you’re planning your next move.</div>
             </div>
@@ -127,16 +131,7 @@
         </div>
       </div>
 
-      <!-- After-tax toggle – moved up under the header -->
-      <div class="row after-tax-toggle" style="margin-top:12px; margin-bottom:4px;">
-        <span class="muted small">Show after-tax amounts</span>
-        <label class="switch">
-          <input type="checkbox" id="afterTaxToggle" />
-          <span class="slider"></span>
-        </label>
-      </div>
-
-      <details class="breakdown" style="margin-top:4px;">
+      <details class="breakdown" style="margin-top:8px;">
         <summary>Breakdown</summary>
 
         <div class="stack s6">
