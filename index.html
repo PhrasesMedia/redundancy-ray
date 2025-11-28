@@ -76,25 +76,32 @@
     <!-- Results -->
     <section class="card pad result">
 
-      <!-- TOP ROW: payout + Ray Recommends side by side / stacked -->
       <div class="result-top-row">
         <div class="result-main-header">
           <div class="muted small" id="totalLabel">Estimated payout (before tax)</div>
           <div class="total" id="totalOut">—</div>
         </div>
 
-        <div id="rayRecommends" class="ray-recommends ray-recommends-inline">
-          <!-- Ray + heading -->
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <!-- UPDATED RAY SECTION -->
+        <div id="rayRecommends" class="ray-recommends ray-recommends-inline" style="padding-left:0;">
+
+          <!-- Ray + heading (tightened spacing, avatar hard-left) -->
+          <div style="
+            display:flex;
+            align-items:center;
+            gap:6px;
+            margin-bottom:10px;
+            padding:0;
+          ">
             <img
               src="ray.png"
               alt="Ray recommends"
               class="ray-avatar"
-              style="width:32px;height:32px;"
+              style="width:30px;height:30px;margin:0;"
             />
-            <div>
-              <div class="ray-recommends-title">Recommended by Ray (Affiliate)</div>
-              <div class="muted tiny">Helpful picks if you’re planning your next move.</div>
+            <div style="margin:0;padding:0;">
+              <div class="ray-recommends-title" style="margin:0;">Recommended by Ray (Affiliate)</div>
+              <div class="muted tiny" style="margin:0;">Helpful picks if you’re planning your next move.</div>
             </div>
           </div>
 
@@ -133,7 +140,6 @@
         <summary>Breakdown</summary>
 
         <div class="stack s6">
-
           <div class="row"><span class="muted">Years of service</span><strong id="yearsOut">—</strong></div>
           <div class="row"><span class="muted">Redundancy weeks</span><strong id="redundancyWeeksOut">—</strong></div>
           <div class="row"><span class="muted">Weekly rate</span><strong id="weeklyRateOut">—</strong></div>
@@ -143,9 +149,7 @@
 
           <hr class="divider" />
 
-          <!-- Tax section -->
           <div id="taxSection" class="tax-section hidden">
-
             <div class="row"><span class="muted">Tax-free redundancy (approx)</span><strong id="taxFreeRedundancyOut">—</strong></div>
             <div class="row"><span class="muted">Taxable redundancy (ETP)</span><strong id="taxableRedundancyOut">—</strong></div>
             <div class="row"><span class="muted">Tax on redundancy (ETP)</span><strong id="redundancyTaxOut">—</strong></div>
@@ -153,7 +157,6 @@
             <div class="row"><span class="muted">Tax on annual leave (approx)</span><strong id="alTaxOut">—</strong></div>
             <div class="row"><span class="muted">Annual leave after tax</span><strong id="alAfterTaxOut">—</strong></div>
             <div class="row"><span class="muted">Total after tax (approx)</span><strong id="totalAfterTaxOut">—</strong></div>
-
           </div>
 
         </div>
@@ -164,7 +167,6 @@
         Mortgage coverage helper
       </button>
 
-      <!-- Mortgage helper panel -->
       <div id="mortgageSection" class="card pad mortgage hidden">
 
         <h3>Mortgage coverage helper</h3>
@@ -191,7 +193,6 @@
             <input type="number" id="mortgageInterestRate" min="0" step="0.01" placeholder="e.g. 5.2" />
           </label>
 
-          <!-- Interest-only toggle -->
           <div class="row after-tax-toggle">
             <span class="muted small">Interest-only repayments</span>
             <label class="switch">
