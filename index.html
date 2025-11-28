@@ -55,20 +55,7 @@
           <input type="number" id="annualSalary" min="0" step="0.01" placeholder="e.g. 80000" />
         </label>
 
-        <div class="row s8">
-          <label class="lbl grow">
-            <span>Age group for tax</span>
-            <select id="ageGroup">
-              <option value="under60">Under 60</option>
-              <option value="60plus">60 or older</option>
-            </select>
-          </label>
-
-          <label class="lbl">
-            <span>Est. marginal tax rate (%)</span>
-            <input type="number" id="marginalRate" min="0" max="60" step="1" value="32" />
-          </label>
-        </div>
+        <!-- Age group + marginal tax inputs removed -->
 
       </div>
     </section>
@@ -76,6 +63,7 @@
     <!-- Results -->
     <section class="card pad result">
 
+      <!-- Headline total -->
       <div class="muted small" id="totalLabel">Estimated payout (before tax)</div>
       <div class="total" id="totalOut">—</div>
 
@@ -87,6 +75,36 @@
           <span class="slider"></span>
         </label>
       </div>
+
+      <!-- Ray Recommends block (now directly under payout + toggle) -->
+      <div class="ray-panel">
+        <div class="ray-panel-header">
+          <img src="ray.png" alt="Ray recommends" class="ray-panel-avatar" />
+          <div>
+            <div class="ray-panel-label">Recommended by Ray (affiliate)</div>
+            <div class="ray-panel-copy tiny">
+              Helpful picks if you’re planning your next move.
+            </div>
+          </div>
+        </div>
+
+        <a class="ray-card" href="https://amzn.to/4rgIict" target="_blank" rel="noopener noreferrer">
+          <div class="ray-card-main">
+            <span class="ray-card-title">The LinkedIn Edge</span>
+            <span class="ray-card-sub">View on Amazon</span>
+          </div>
+          <span class="ray-card-arrow">›</span>
+        </a>
+
+        <a class="ray-card" href="https://amzn.to/3XMaRAR" target="_blank" rel="noopener noreferrer">
+          <div class="ray-card-main">
+            <span class="ray-card-title">Career Workbook</span>
+            <span class="ray-card-sub">View on Amazon</span>
+          </div>
+          <span class="ray-card-arrow">›</span>
+        </a>
+      </div>
+      <!-- End Ray Recommends -->
 
       <details class="breakdown">
         <summary>Breakdown</summary>
@@ -117,28 +135,6 @@
 
         </div>
       </details>
-
-      <!-- Ray Recommends block (inside results, above mortgage helper) -->
-      <div class="ray-panel">
-        <h3 class="ray-recommend-heading">Ray Recommends (Affiliate)</h3>
-
-        <a class="ray-card" href="https://amzn.to/4rgIict" target="_blank" rel="noopener noreferrer">
-          <div class="ray-card-main">
-            <span class="ray-card-title">The LinkedIn Edge</span>
-            <span class="ray-card-sub">View on Amazon</span>
-          </div>
-          <span class="ray-card-arrow">›</span>
-        </a>
-
-        <a class="ray-card" href="https://amzn.to/3XMaRAR" target="_blank" rel="noopener noreferrer">
-          <div class="ray-card-main">
-            <span class="ray-card-title">Career Workbook</span>
-            <span class="ray-card-sub">View on Amazon</span>
-          </div>
-          <span class="ray-card-arrow">›</span>
-        </a>
-      </div>
-      <!-- End Ray Recommends -->
 
       <!-- Mortgage helper toggle button -->
       <button id="mortgageToggleBtn" class="copy mortgage-btn" type="button">
