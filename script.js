@@ -5,8 +5,6 @@ const fullYearsEl      = document.getElementById('fullYears');
 const alHoursEl        = document.getElementById('alHours');
 const hoursPerWeekEl   = document.getElementById('hoursPerWeek');
 const annualSalaryEl   = document.getElementById('annualSalary');
-const ageGroupEl       = document.getElementById('ageGroup');
-const marginalRateEl   = document.getElementById('marginalRate');
 const afterTaxToggle   = document.getElementById('afterTaxToggle');
 
 // Outputs - headline
@@ -101,7 +99,6 @@ function recalc() {
   const alHours      = parseFloat(alHoursEl.value || '') || 0;
   const hoursPerWeek = parseFloat(hoursPerWeekEl.value || '') || 0;
   const annualSalary = parseFloat(annualSalaryEl.value || '') || 0;
-  const marginalRate = parseFloat(marginalRateEl.value || '') || 0;
 
   // Basic derived rates
   const weeklyRate = annualSalary > 0 ? annualSalary / 52 : 0;
@@ -139,12 +136,14 @@ function recalc() {
   const taxFreeRedundancy = Math.min(redundancyPay, taxFreeCap);
   const taxableRedundancy = Math.max(0, redundancyPay - taxFreeRedundancy);
 
-  const etpRate = ageGroupEl && ageGroupEl.value === '60plus' ? 0.15 : 0.17;
+  // Fixed tax rates (standard assumptions)
+  const etpRate = 0.17; // 17% for under 60
+  const marginalRate = 0.32; // Assume 32% marginal rate for annual leave
+
   const redundancyTax = taxableRedundancy * etpRate;
   const redundancyAfterTax = redundancyPay - redundancyTax;
 
-  const mr = Math.min(Math.max(marginalRate, 0), 60) / 100; // clamp 0–60%
-  const alTax = alPayout * mr;
+  const alTax = alPayout * marginalRate;
   const alAfterTax = alPayout - alTax;
 
   const totalAfterTax = redundancyAfterTax + alAfterTax;
@@ -334,13 +333,10 @@ if (mortgageInterestOnlyEl) {
   fullYearsEl,
   alHoursEl,
   hoursPerWeekEl,
-  annualSalaryEl,
-  ageGroupEl,
-  marginalRateEl
+  annualSalaryEl
 ].forEach(el => {
   if (!el) return;
-  const eventName = el === ageGroupEl ? 'change' : 'input';
-  el.addEventListener(eventName, recalc);
+  el.addEventListener('input', recalc);
 });
 
 if (afterTaxToggle) {
