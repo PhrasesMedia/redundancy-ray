@@ -288,16 +288,34 @@ tbody td{
   text-align: left;
   width: 100%;
   opacity: 0;
-  transform: translateY(4px);
   display: none;
-  transition:
-    opacity 1.0s ease 0.25s,
-    transform 1.0s ease 0.25s;
+  transition: opacity 1.8s ease;
 }
 
 .ray-recommends.visible {
   opacity: 1;
-  transform: translateY(0);
+}
+
+.ray-recommends-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.ray-recommends-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 1.2s ease 0.3s, transform 1.2s ease 0.3s;
+}
+
+.ray-recommends.visible .ray-recommends-avatar {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .ray-recommends-title {
@@ -305,7 +323,6 @@ tbody td{
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--muted);
-  margin-bottom: 6px;
 }
 
 .ray-recommends-list {
@@ -324,11 +341,27 @@ tbody td{
   border: 1px solid var(--line);
   text-decoration: none;
   cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
   transition:
+    opacity 1.0s ease,
+    transform 1.0s ease,
     background-color 0.18s ease,
     border-color 0.18s ease,
-    transform 0.1s ease,
     box-shadow 0.1s ease;
+}
+
+.ray-recommends.visible .ray-recommends-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ray-recommends.visible .ray-recommends-card:nth-child(1) {
+  transition-delay: 0.4s;
+}
+
+.ray-recommends.visible .ray-recommends-card:nth-child(2) {
+  transition-delay: 0.6s;
 }
 
 .ray-recommends-main {
