@@ -280,52 +280,57 @@ tbody td{
 }
 
 /* ====================================================== */
-/* ⭐ RAY RECOMMENDS – DARK BABYPAY-STYLE FADE-IN CARDS   */
+/* ⭐ RESULTS LAYOUT                                      */
 /* ====================================================== */
 
-/* CHANGED: removed display:none so it always reserves space */
-.ray-recommends {
-  margin-top: 18px;
-  text-align: left;
-  width: 100%;
-  opacity: 0;
-  transform: translateY(4px);
-  /* display:none;  <-- removed to stop layout jump */
-  transition:
-    opacity 1.0s ease 0.25s,
-    transform 1.0s ease 0.25s;
+/* Stack payout + Ray vertically with tight spacing */
+.result-top-row{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:8px;
 }
 
-/* When we mark it visible in JS, only opacity/transform change */
-.ray-recommends.visible {
-  opacity: 1;
-  transform: translateY(0);
+/* ====================================================== */
+/* ⭐ RAY RECOMMENDS                                      */
+/* ====================================================== */
+
+.ray-recommends{
+  margin-top:4px;
+  text-align:left;
+  width:100%;
 }
 
-.ray-recommends-title {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  margin-bottom: 6px;
+.ray-recommends-inline{
+  align-self:center;
+  width:100%;
+  max-width:280px;
 }
 
-.ray-recommends-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.ray-recommends-title{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  color:var(--muted);
+  margin-bottom:6px;
 }
 
-.ray-recommends-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 10px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--line);
-  text-decoration: none;
-  cursor: pointer;
+.ray-recommends-list{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.ray-recommends-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:8px 10px;
+  border-radius:10px;
+  background-color:rgba(255,255,255,0.03);
+  border:1px solid var(--line);
+  text-decoration:none;
+  cursor:pointer;
   transition:
     background-color 0.18s ease,
     border-color 0.18s ease,
@@ -333,66 +338,30 @@ tbody td{
     box-shadow 0.1s ease;
 }
 
-.ray-recommends-main {
-  display: flex;
-  flex-direction: column;
-}
-
-.ray-recommends-name {
-  font-size: 13px;
-  color: var(--text);
-}
-
-.ray-recommends-link {
-  font-size: 11px;
-  color: var(--muted);
-}
-
-.ray-recommends-arrow {
-  font-size: 16px;
-  color: var(--muted);
-}
-
-/* Hover soft lift */
-.ray-recommends-card:hover {
-  background-color: rgba(122, 162, 255, 0.18);
-  border-color: var(--accent);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-}
-
-/* ====================================================== */
-/* ⭐ LAYOUT: CENTRE RAY UNDER ESTIMATED PAYOUT           */
-/* ====================================================== */
-
-/* CHANGED: stack payout + Ray vertically so Ray can centre */
-.result-top-row{
+.ray-recommends-main{
   display:flex;
   flex-direction:column;
-  align-items:stretch;
-  gap:16px;
 }
 
-.result-main-header{
-  flex:0 0 auto;
-  min-width:0;
+.ray-recommends-name{
+  font-size:13px;
+  color:var(--text);
 }
 
-/* CHANGED: centre the block and constrain width */
-.ray-recommends-inline{
-  align-self:center;
-  width:100%;
-  max-width:280px;
-  margin-top:0;
+.ray-recommends-link{
+  font-size:11px;
+  color:var(--muted);
 }
 
-/* On small screens we keep the same stack; this is just a no-op now
-   but left in case you later want to go back to side-by-side on desktop. */
-@media (max-width:700px){
-  .result-top-row{
-    flex-direction:column;
-  }
-  .ray-recommends-inline{
-    width:100%;
-  }
+.ray-recommends-arrow{
+  font-size:16px;
+  color:var(--muted);
+}
+
+/* Hover lift */
+.ray-recommends-card:hover{
+  background-color:rgba(122,162,255,0.18);
+  border-color:var(--accent);
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(0,0,0,0.35);
 }
