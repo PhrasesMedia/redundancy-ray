@@ -391,3 +391,15 @@ tbody td{
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
+
+/* ====================================================== */
+/* ⭐ NEW ICON STYLING (BOOK + HEADPHONES)                */
+/* ====================================================== */
+
+.ray-icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  opacity: 0.9;
+  flex-shrink: 0;
+}
