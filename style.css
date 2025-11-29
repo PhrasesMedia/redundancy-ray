@@ -375,6 +375,7 @@ tbody td{
 .ray-recommends-link {
   font-size: 11px;
   color: var(--muted);
+  margin-top: 2px; /* ⭐ FIX: centers "View on Amazon" perfectly */
 }
 
 /* Arrow alignment fix */
@@ -393,7 +394,7 @@ tbody td{
 }
 
 /* ====================================================== */
-/* ⭐ ICON FIX (BOOK + HEADPHONES CENTER ALIGN)           */
+/* ⭐ ICON FIX (BOOK + HEADPHONES)                         */
 /* ====================================================== */
 
 .ray-icon {
@@ -402,6 +403,4 @@ tbody td{
   margin-right: 10px;
   opacity: 0.9;
   flex-shrink: 0;
-  position: relative;
-  top: -1px;   /* <-- Perfect centering nudge */
 }
