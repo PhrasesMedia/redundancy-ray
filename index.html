@@ -194,9 +194,17 @@
                  href="https://amzn.to/44qxpuM" 
                  target="_blank" 
                  rel="noopener noreferrer"
-                 onclick="gtag('event', 'affiliate_click', { event_category: 'affiliate', event_label: 'barefoot_investor' });">
+                 onclick="
+                   gtag('event', 'click_affiliate', {
+                     event_category: 'affiliate',
+                     event_label: 'barefoot_investor'
+                   });
+                   var url = this.href;
+                   setTimeout(function(){ window.open(url, '_blank'); }, 200);
+                   return false;
+                 ">
 
-                <img src="redundancyraybook.png" class="ray-icon" alt="Book icon">
+                <img src="redundancyraybook.png" class="ray-icon" alt="Book icon" />
 
                 <div class="ray-recommends-main">
                   <div class="ray-recommends-name">The Barefoot Investor for Families</div>
@@ -211,9 +219,17 @@
                  href="https://www.amazon.com.au/hz/audible/mlp/membership/premiumplus" 
                  target="_blank" 
                  rel="noopener noreferrer"
-                 onclick="gtag('event', 'affiliate_click', { event_category: 'affiliate', event_label: 'audible_trial' });">
+                 onclick="
+                   gtag('event', 'click_affiliate', {
+                     event_category: 'affiliate',
+                     event_label: 'audible_trial'
+                   });
+                   var url2 = this.href;
+                   setTimeout(function(){ window.open(url2, '_blank'); }, 200);
+                   return false;
+                 ">
 
-                <img src="redundancyrayheadphones.png" class="ray-icon" alt="Headphones icon">
+                <img src="redundancyrayheadphones.png" class="ray-icon" alt="Headphones icon" />
 
                 <div class="ray-recommends-main">
                   <div class="ray-recommends-name">Audible Free Trial</div>
