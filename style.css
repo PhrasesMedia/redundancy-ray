@@ -199,7 +199,7 @@ details summary::-webkit-details-marker{
   display:none;
 }
 
-/* Primary button (Copy summary & any .copy button) */
+/* Primary button */
 .copy{
   width:100%;
   margin-top:8px;
@@ -215,7 +215,6 @@ details summary::-webkit-details-marker{
   filter:brightness(1.05);
 }
 
-/* Notes */
 .note{
   margin:6px 0 0 0;
 }
@@ -253,7 +252,7 @@ tbody td{
   padding-bottom:4px;
 }
 
-/* Mortgage helper button – force blue via ID */
+/* Mortgage button */
 #mortgageToggleBtn{
   background:#2237c5 !important;
   border:1px solid #2a48ff !important;
@@ -265,7 +264,6 @@ tbody td{
   filter:brightness(1.05);
 }
 
-/* Mortgage panel */
 .mortgage{
   margin-top:8px;
 }
@@ -280,7 +278,7 @@ tbody td{
 }
 
 /* ====================================================== */
-/* ⭐ RAY RECOMMENDS – DARK BABYPAY-STYLE FADE-IN CARDS   */
+/* ⭐ RAY RECOMMENDS – FADE-IN CARDS                      */
 /* ====================================================== */
 
 .ray-recommends {
@@ -379,9 +377,11 @@ tbody td{
   color: var(--muted);
 }
 
+/* Arrow alignment fix */
 .ray-recommends-arrow {
   font-size: 16px;
   color: var(--muted);
+  align-self: center;
 }
 
 /* Hover soft lift */
@@ -393,7 +393,7 @@ tbody td{
 }
 
 /* ====================================================== */
-/* ⭐ NEW ICON STYLING (BOOK + HEADPHONES)                */
+/* ⭐ ICON FIX (BOOK + HEADPHONES CENTER ALIGN)           */
 /* ====================================================== */
 
 .ray-icon {
@@ -402,4 +402,6 @@ tbody td{
   margin-right: 10px;
   opacity: 0.9;
   flex-shrink: 0;
+  position: relative;
+  top: -1px;   /* <-- Perfect centering nudge */
 }
